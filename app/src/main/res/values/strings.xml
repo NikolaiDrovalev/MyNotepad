@@ -16,6 +16,6 @@
     <string name="friday">Покататься на лыжах</string>
     <string name="saturday">Сходить в кинотеатр</string>
     <string name="sunday">Выспаться</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

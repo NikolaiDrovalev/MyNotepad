@@ -1,8 +1,10 @@
-package ru.geekbrains.mynotepad;
+package ru.geekbrains.mynotepad.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import ru.geekbrains.mynotepad.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,NotepadFragment.newInstance()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, NotepadFragment.newInstance()).commit();
         }
     }
 }

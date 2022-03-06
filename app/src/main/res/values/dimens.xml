@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="sizeItemList">18sp</dimen>
+    <dimen name="textDescription">32sp</dimen>
+    <dimen name="textTitle">42sp</dimen>
 </resources>

@@ -21,4 +21,14 @@
         <item>@string/sunday</item>
     </string-array>
 
+    <string-array name="color_background">
+        <item>@color/Cyan</item>
+        <item>@color/SlateBlue</item>
+        <item>@color/Green</item>
+        <item>@color/Yellow</item>
+        <item>@color/Firebrick</item>
+        <item>@color/Maroon</item>
+        <item>@color/DarkOrange</item>
+    </string-array>
+
 </resources>

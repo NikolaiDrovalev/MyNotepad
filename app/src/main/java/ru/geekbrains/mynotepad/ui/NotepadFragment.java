@@ -1,4 +1,4 @@
-package ru.geekbrains.mynotepad;
+package ru.geekbrains.mynotepad.ui;
 
 import android.os.Bundle;
 
@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import ru.geekbrains.mynotepad.R;
+import ru.geekbrains.mynotepad.repository.LocalRepositoryImpl;
 
 
 public class NotepadFragment extends Fragment {
@@ -38,7 +41,8 @@ public class NotepadFragment extends Fragment {
 
     void initAdapter(){
         notepadAdapter = new NotepadAdapter();
-        notepadAdapter.setData(getData());
+        LocalRepositoryImpl localRepository = new LocalRepositoryImpl(requireContext().getResources());
+        notepadAdapter.setData(localRepository.init());
     }
     void initRecycler(View view){
         RecyclerView recyclerView = view.findViewById(R.id.recycleView);
