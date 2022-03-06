@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MyNotepad</string>
+
+    <string name="one">Понедельник</string>
+    <string name="two">Вторник</string>
+    <string name="three">Среда</string>
+    <string name="four">Четверг</string>
+    <string name="five">Пятница</string>
+    <string name="six">Суббота</string>
+    <string name="seven">Воскресенье</string>
+
+    <string name="monday">Полить цветы</string>
+    <string name="tuesday">Сходить в бассейн</string>
+    <string name="wednesday">Выбросить ёлку</string>
+    <string name="thursday">Сходить в театр</string>
+    <string name="friday">Покататься на лыжах</string>
+    <string name="saturday">Сходить в кинотеатр</string>
+    <string name="sunday">Выспаться</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
