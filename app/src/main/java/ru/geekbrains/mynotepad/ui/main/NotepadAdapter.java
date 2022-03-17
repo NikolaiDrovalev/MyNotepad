@@ -1,4 +1,4 @@
-package ru.geekbrains.mynotepad.ui;
+package ru.geekbrains.mynotepad.ui.main;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ru.geekbrains.mynotepad.R;
@@ -16,12 +17,30 @@ public class NotepadAdapter extends RecyclerView.Adapter<NotepadAdapter.MyViewHo
 
     private NoteSource noteSource;
 
+    OnItemClickListener onItemClickListener;
+
+    Fragment fragment;
+
+    private int menuPosition;
+
+    public int getMenuPosition(){
+        return menuPosition;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
     public void setData(NoteSource noteSource) {
         this.noteSource = noteSource;
         notifyDataSetChanged();
     }
-    NotepadAdapter(){
 
+    NotepadAdapter(){
+    }
+
+    NotepadAdapter(Fragment fragment){
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -48,6 +67,15 @@ public class NotepadAdapter extends RecyclerView.Adapter<NotepadAdapter.MyViewHo
             super(itemView);
             textViewTitle = (TextView) itemView.findViewById(R.id.title);
             textViewDescription = (TextView) itemView.findViewById(R.id.description);
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    menuPosition = getLayoutPosition();
+                    return false;
+                }
+            });
+            fragment.registerForContextMenu(itemView);
         }
 
         public void bindContentWithLayout(NoteData content){
