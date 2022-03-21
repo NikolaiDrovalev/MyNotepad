@@ -4,8 +4,10 @@ import java.util.List;
 
 public interface NoteSource {
     int size();
-    List<NoteData> getAllCardsData();
-    NoteData getCardData(int position);
+
+    List<NoteData> getAllNotesData();
+
+    NoteData getNoteData(int position);
 
     void clearNotesData();
     void addNoteData(NoteData noteData);

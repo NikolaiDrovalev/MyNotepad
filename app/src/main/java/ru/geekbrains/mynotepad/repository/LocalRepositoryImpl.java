@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import ru.geekbrains.mynotepad.R;
@@ -36,12 +35,12 @@ public class LocalRepositoryImpl implements NoteSource {
     }
 
     @Override
-    public List<NoteData> getAllCardsData() {
+    public List<NoteData> getAllNotesData() {
         return dataSource;
     }
 
     @Override
-    public NoteData getCardData(int position) {
+    public NoteData getNoteData(int position) {
         return dataSource.get(position);
     }
 

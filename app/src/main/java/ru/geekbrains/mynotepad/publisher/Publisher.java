@@ -6,7 +6,7 @@ import java.util.List;
 import ru.geekbrains.mynotepad.repository.NoteData;
 
 public class Publisher {
-    private List<Observer> observers;
+    private final List<Observer> observers;
 
     public Publisher(){
         observers = new ArrayList<>();

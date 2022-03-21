@@ -1,15 +1,7 @@
 package ru.geekbrains.mynotepad.ui.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import ru.geekbrains.mynotepad.R;
 import ru.geekbrains.mynotepad.publisher.Observer;
@@ -60,15 +59,16 @@ public class NotepadFragment extends Fragment implements OnItemClickListener {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add:
-                data.addNoteData(new NoteData("Новая заметка" + data.size(), "Описание новой заметки" + data.size(), R.array.color_background));
+            case (R.id.action_add):
+                data.addNoteData(new NoteData("Новая заметка" + data.size(), "Описание новой заметки" + data.size(),R.array.color_background));
                 notepadAdapter.notifyItemInserted(data.size() - 1);
                 recyclerView.smoothScrollToPosition(data.size() - 1);
                 return true;
-            case R.id.action_clear:
+            case (R.id.action_clear):
                 data.clearNotesData();
                 notepadAdapter.notifyDataSetChanged();
                 return true;
@@ -79,7 +79,7 @@ public class NotepadFragment extends Fragment implements OnItemClickListener {
     @Override
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        requireActivity().getMenuInflater().inflate(R.menu.notes_menu,menu);
+        requireActivity().getMenuInflater().inflate(R.menu.note_menu,menu);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class NotepadFragment extends Fragment implements OnItemClickListener {
                     }
                 };
                 ((MainActivity) requireActivity()).getPublisher().subscribe(observer);
-                ((MainActivity) requireActivity()).getNavigation().addFragment(NoteFragment.newInstance(data.getCardData(menuPosition)), true);
+                ((MainActivity) requireActivity()).getNavigation().addFragment(NoteFragment.newInstance(data.getNoteData(menuPosition)), true);
                 return true;
             }
             case R.id.action_delete: {
@@ -110,14 +110,14 @@ public class NotepadFragment extends Fragment implements OnItemClickListener {
     }
 
     void initAdapter() {
-        notepadAdapter = new NotepadAdapter();
+        notepadAdapter = new NotepadAdapter(this);
         data = new LocalRepositoryImpl(requireContext().getResources()).init();
         notepadAdapter.setData(data);
         notepadAdapter.setOnItemClickListener(NotepadFragment.this);
     }
 
     void initRecycler(View view) {
-        RecyclerView recyclerView = view.findViewById(R.id.recycleView);
+        recyclerView = view.findViewById(R.id.recycleView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);

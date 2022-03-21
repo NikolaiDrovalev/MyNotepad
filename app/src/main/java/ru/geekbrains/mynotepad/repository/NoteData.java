@@ -2,9 +2,6 @@ package ru.geekbrains.mynotepad.repository;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.provider.ContactsContract;
-
-import java.util.Date;
 
 public class NoteData implements Parcelable {
     private String title;
@@ -17,6 +14,10 @@ public class NoteData implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setBackgroundColor(int backgroundColor){
+        this.backgroundColor = backgroundColor;
     }
 
     public NoteData(String title, String description, int backgroundColor) {
