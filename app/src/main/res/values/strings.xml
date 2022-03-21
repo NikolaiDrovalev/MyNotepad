@@ -23,4 +23,7 @@
     <string name="clear">очистить</string>
     <string name="update">обновить</string>
     <string name="delete">удалить</string>
+    <string name="massive">из Array</string>
+    <string name="sp">из SP</string>
+    <string name="fs">из FS</string>
 </resources>
